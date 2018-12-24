@@ -3,4 +3,4 @@ Midnight Gadget Viewer
 
 Generate .mp4 video from MP-Gadget 3 cosmology simulator snapshots.
 
-Uses ffmpeg, bigfle, matplotlib
+Uses ffmpeg, bigfile, matplotlib

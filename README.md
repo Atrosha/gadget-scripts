@@ -4,4 +4,5 @@ Midnight Gadget Viewer
 Uses ffmpeg
 
 on Ubuntu
-# sudo apt-get install ffmpeg
+
+sudo apt-get install ffmpeg

@@ -1,8 +1,6 @@
 # mgadgetv
 Midnight Gadget Viewer
 
-Uses ffmpeg
+Generate .mp4 video from MP-Gadget 3 cosmology simulator snapshots.
 
-on Ubuntu
-
-sudo apt-get install ffmpeg
+Uses ffmpeg, bigfle, matplotlib

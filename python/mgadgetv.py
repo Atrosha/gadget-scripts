@@ -33,9 +33,9 @@ def generate_frame (fn):
 
 f = open ('output/Snapshots.txt','r')
 
-for line in f:
-    tmp = line.split(' ', 1)
-    with writer.saving(fig, "writer_test.mp4", 100):
+with writer.saving(fig, "writer_test.mp4", 100):
+     for line in f:
+         tmp = line.split(' ', 1)
          generate_frame(tmp[0])
          writer.grab_frame()
 

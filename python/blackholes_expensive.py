@@ -1,5 +1,5 @@
 #
-# animation.FuncAnimation are recursive so its code waste too much memory and 
+# animation.FuncAnimation are recursive so those code waste too much memory and 
 # slow down the PC in case of a big amount of data.
 # Approc on 50-60 snapshots it wastes 3 GB of memory.
 #

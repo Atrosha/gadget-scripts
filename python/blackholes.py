@@ -36,7 +36,7 @@ def generate_frame (fn):
         ax.plot([b[0][0]/1000, b[0][0]/1000], [b[0][1]/1000, b[0][1]/1000], zs=[b[0][2]/1000, 0], linewidth=1, color = 'gray', linestyle = 'dotted') 
     
     print('Saving frame: '+fn+'.png')
-    fig.savefig(name+'/'+fn+'.png', format = 'png')
+    fig.savefig(name+'/'+fn+'.png', format = 'png', dpi=250)
     print('Frame '+fn+' finished.')
     o = open(name+'/png.idx','a')
     o.write(fn+"\n")

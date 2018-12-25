@@ -59,5 +59,5 @@ anim = animation.FuncAnimation(fig, generate_frame, fnum, blit=False)
 
 print('Exporting video...');
 writer = FFMpegWriter(fps=30, bitrate=8000)
-anim.save("blackholes.mp4", writer=writer)
+anim.save("blackholes.mp4", writer=writer, dpi=250)
 

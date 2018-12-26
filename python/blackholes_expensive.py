@@ -32,7 +32,7 @@ f.close
 
 def generate_frame (fnu):
     fn = ln[fnu]
-    print('\nStart bulding frame <-----------==== '+fn)
+    print('\nStart bulding frame <-----------==== < '+fn)
     bf1 = File("output/PART_"+fn+"/5")
     print('Reading data from PART_'+fn)
     data1 = Dataset(bf1, ['Position','Mass'])

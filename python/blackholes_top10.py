@@ -15,7 +15,7 @@ fig = plt.figure()
 ax = fig.add_subplot(1,1,1,projection='3d')
 
 def generate_frame (fn):
-    print('\nStart bulding frame <-----------==== '+fn)
+    print('\nStart bulding frame <-----------==== < ' +name+ ' > '+fn)
     bf1 = File("output/PART_"+fn+"/5")
     print('Reading data from PART_'+fn)
     data1 = Dataset(bf1, ['Position','Mass','ID'])

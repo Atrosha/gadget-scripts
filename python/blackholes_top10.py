@@ -20,7 +20,6 @@ def generate_frame (fn):
     tmpdata1 = Dataset(bf1, ['Position', 'Mass'])
     data11 = np.array(list((e[0]) for e in tmpdata1))
     data12 = np.array(list((e[1]) for e in tmpdata1))
-    print(data11)
     bf2 = File("output/PIG_"+fn+"/5")
     print('Reading data from PIG_'+fn)
     data2 = Dataset(bf2, ['Position'])

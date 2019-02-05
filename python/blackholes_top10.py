@@ -3,10 +3,9 @@ from bigfile import File, Dataset
 # This import registers the 3D projection, but is otherwise unused.
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 
-import matplotlib.animation as animation
-from matplotlib.animation import FFMpegWriter
 import matplotlib.pyplot as plt
 from matplotlib import cm
+import numpy as np
 import os
 
 name = 'blackholes'
@@ -18,7 +17,10 @@ def generate_frame (fn):
     print('\nStart bulding frame <-----------==== < ' +name+ ' > '+fn)
     bf1 = File("output/PART_"+fn+"/5")
     print('Reading data from PART_'+fn)
-    data1 = Dataset(bf1, ['Position','Mass','ID'])
+    tmpdata1 = Dataset(bf1, ['Position', 'Mass'])
+    data11 = np.array(list((e[0]) for e in tmpdata1))
+    data12 = np.array(list((e[1]) for e in tmpdata1))
+    print(data11)
     bf2 = File("output/PIG_"+fn+"/5")
     print('Reading data from PIG_'+fn)
     data2 = Dataset(bf2, ['Position'])
@@ -30,23 +32,23 @@ def generate_frame (fn):
     ax.set_zlim(0,20);
 
     print('Finding Top 10 by Mass...')
-    top10 = sorted(data1, key=lambda base1: base1[2], reverse=True)[:10]
+    if (data12.size):
+        ind = data12.argmax()
+        ax.scatter(data11[ind][0]/1000, data11[ind][1]/1000, data11[ind][2]/1000, 'z', s=30, c='red', marker="*") 
+        data11 = np.delete(data11, ind, axis=0)
+        data12 = np.delete(data12, ind)
+    
+    for i in range(9):
+        if (not data12.size): break
+        ind = data12.argmax()
+        ax.scatter(data11[ind][0]/1000, data11[ind][1]/1000, data11[ind][2]/1000, 'z', s=10, c='green', marker="D") 
+        data11 = np.delete(data11, ind, axis=0)
+        data12 = np.delete(data12, ind)
+
     print('Generating dots...')
-    for a in data1:
-        sz = 1
-        col = cm.viridis(a[1])
-        mar = '.';
-        for t10 in top10:
-            if a[2] == t10[2]:
-               if a[2] == top10[0][2]:
-                   col = 'red'
-                   mar = "*"
-                   sz = 30
-               else:
-                   col = 'green'
-                   mar = "D"
-                   sz = 10
-        ax.scatter(a[0][0]/1000, a[0][1]/1000, a[0][2]/1000, 'z', s=sz, c=col, marker=mar) 
+    for i in range(data12.size):
+        ax.scatter(data11[i][0]/1000, data11[i][1]/1000, data11[i][2]/1000, 'z', s=1, c=cm.viridis(data12[i]), marker='.') 
+
     print('Generating lines...')
     for a in data2:
         ax.plot([a[0][0]/1000, a[0][0]/1000], [a[0][1]/1000, a[0][1]/1000], zs=[a[0][2]/1000, 0], linewidth=1, color = 'gray', linestyle = 'dotted') 

@@ -1,5 +1,3 @@
-# Midnight Gadget Viewer
-
 From eve-ru.com community.
 
 Please, visit our forum at http://forum.eve-ru.com
